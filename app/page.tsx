@@ -6,10 +6,12 @@ import Sidebar from "@/components/Sidebar";
 import { demoCases } from "@/lib/dummyData";
 import { analyzeLabs } from "@/lib/labEngine";
 
+type DemoKey = keyof typeof demoCases;
+
 export default function Home() {
   const [highlights, setHighlights] = useState<any[]>([]);
 
-  const loadDemo = (caseName: string) => {
+  const loadDemo = (caseName: DemoKey) => {
     const labs = demoCases[caseName].labs;
     const result = analyzeLabs(labs);
     setHighlights(result);
